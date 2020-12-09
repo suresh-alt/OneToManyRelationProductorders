@@ -1,0 +1,15 @@
+{% extends 'common.html' %}
+{% block suresh  %}
+    {% include 'customermenu.html' %}
+    <table align="center" border="2">
+    <tr>
+        <th><img src="{{ data.image.url }}" width="250" height="250"> </th>
+    </tr>
+    <tr>
+        <th> Welcome To Mr/Miss:{{ data.cname }}</th>
+
+    </tr>
+    </table>
+
+
+{% endblock %}

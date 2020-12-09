@@ -1,0 +1,46 @@
+{% extends 'common.html' %}
+
+{% block suresh %}
+    {% include 'customermenu.html' %}
+     <table align="center" border="2" width="600">
+    <tr>
+        <th colspan="6" style="text-align: center;font-size: 20px;color: red">
+            Product Information
+        </th>
+        {% if message %}
+            <th style="color: red;font-size: 20px">{{ message }}</th>
+        {% endif %}
+    </tr>
+    <tr>
+        <th>pno</th>
+        <th>pname</th>
+        <th>pprice</th>
+        <th>quantity</th>
+        <th>photo</th>
+        <th>Orders</th>
+    </tr>
+    {% for x in data %}
+        <tr>
+        <th>{{ x.pno }}</th>
+        <th>{{ x.pname }}</th>
+        <th>{{ x.price }}</th>
+        <th>{{ x.quantity }}</th>
+        <th><img src="{{ x.Photo.url }}" width="80" height="80"></th>
+        <th>
+
+
+             <form action="{% url 'orderp' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{ x.pno }}" name="t1">
+
+                <input type="hidden" value="{{ request.session.user }}" name="t2">
+
+
+            <button type="submit">Order</button>
+            </form>
+
+        </th>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

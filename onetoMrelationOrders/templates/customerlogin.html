@@ -1,0 +1,83 @@
+{% extends 'common.html' %}
+{% block suresh %}
+    {% include 'mainmenu.html' %}
+    <table align="center" border="2">
+    <tr>
+        <th>
+            <form action="{% url 'clogincheck' %}" method="post">
+                {% csrf_token %}
+            <table align="center">
+                <tr>
+                    <th style="font-size: 20px;color: red;text-align: center">
+                        Customer Login
+                    </th>
+
+                </tr>
+                <tr>
+                    <th>
+                        <input type="number" name="c1" placeholder="contactno" required>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="password" name="c2" placeholder="Password" required>
+                    </th>
+                </tr>
+                 <tr>
+      <th  style="text-align: center">
+          <button type="submit" class="btn btn-primary">Login</button>
+      </th>
+  </tr>
+                {% if error %}
+                    <tr>
+                    <th style="text-align: center;font-size: 20px;color: red">{{ error }}</th>
+                    </tr>
+                {% endif %}
+            </table></form>
+        </th>
+    <th>
+        <form action="{% url 'creg' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <table align="center">
+            <tr>
+                    <th style="font-size: 20px;color: red;text-align: center">
+                        Customer Registration Form
+                    </th>
+
+                </tr>
+            <tr>
+                <th>
+                    <input type="text" name="t1" placeholder="customername" required>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <textarea name="t2" require>
+
+                    </textarea>
+                </th>
+            </tr>
+            <tr>
+                <th>Phot:
+                    <input type="file" name="t3" required>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="number" name="t4" placeholder="customercontactno" required>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="password" name="t5" placeholder="Password" required>
+                </th>
+            </tr>
+                     <tr>
+      <th  style="text-align: center">
+          <button type="submit" class="btn btn-primary">Register</button>
+      </th>
+  </tr>
+        </table></form>
+    </th></tr>
+    </table>
+{% endblock %}

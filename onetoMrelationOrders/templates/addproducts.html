@@ -1,0 +1,64 @@
+{% extends 'common.html' %}
+
+{% block suresh %}
+    {% include 'adminmenu.html' %}
+     <form action="{% url 'savep' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <table align="center">
+            <tr>
+                    <th style="font-size: 20px;color: red;text-align: center">
+                        AddProducts Information
+                    </th>
+
+                </tr>
+            <tr>
+                <th>
+                    <input type="text" name="t1" placeholder="pname" required>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                 <input type="number" placeholder="pprice" name="t2" required>
+                </th>
+            </tr>
+            <tr>
+                <th>Phot:
+                    <input type="file" name="t3" required>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="number" name="t4" placeholder="quantity" required>
+                </th>
+            </tr>
+
+                     <tr>
+      <th  style="text-align: center">
+          <button type="submit" class="btn btn-primary">Save</button>
+      </th>
+  </tr>
+        </table></form>
+    <table align="center" border="2" width="600">
+    <tr>
+        <th colspan="5" style="text-align: center;font-size: 20px;color: red">
+            Product Information
+        </th>
+    </tr>
+    <tr>
+        <th>pno</th>
+        <th>pname</th>
+        <th>pprice</th>
+        <th>quantity</th>
+        <th>photo</th>
+    </tr>
+    {% for x in data %}
+        <tr>
+        <th>{{ x.pno }}</th>
+        <th>{{ x.pname }}</th>
+        <th>{{ x.price }}</th>
+        <th>{{ x.quantity }}</th>
+        <th><img src="{{ x.Photo.url }}" width="80" height="80"></th>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

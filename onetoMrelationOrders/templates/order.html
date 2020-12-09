@@ -1,0 +1,25 @@
+{% extends 'common.html' %}
+
+{% block suresh %}
+    {% include 'adminmenu.html' %}
+    <table align="center" border="2">
+    <tr>
+        <th colspan="3">
+            Ordered Details
+        </th>
+    </tr>
+    <tr>
+        <th>Orderid</th>
+        <th>Customerid</th>
+        <th>Productid</th>
+    </tr>
+    {% for x in data %}
+        <tr>
+        <th>{{ x.order_id }}</th>
+        <th>{{ x.Customer_id }}</th>
+        <th>{{ x.Product_id }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'common.html' %}
+
+{% block suresh %}
+    {% include "customermenu.html" %}
+    <table align="center" border="2">
+    <tr>
+        <th colspan="5" style="font-size: 20px;color: red;text-align: center">Ordered Details</th>
+    </tr>
+    <tr>
+        <th>Orderid</th>
+        <th>Orderdate</th>
+        <th>ProductName</th>
+        <th>Product price</th>
+        <th>CustomerName</th>
+    </tr>
+    {% for x in data %}
+        <tr>
+        <th>
+            {{ x.order_id }}
+        </th>
+        <th>{{ x.orderdate }}</th>
+        <th>{{ x.Product.pname }}</th>
+        <th>{{ x.Product.price }}</th>
+        <th>{{ x.Customer.cname }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
